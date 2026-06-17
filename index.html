@@ -6,20 +6,20 @@
   <title>Spandan — 스판단 — স্পন্দন</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;500;600&family=Noto+Sans+KR:wght@300;400&family=Noto+Serif+Bengali:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Canadian+Aboriginal:wght@300;400;500&family=Noto+Sans+KR:wght@300;400&family=Noto+Serif+Bengali:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:       #f5f2eb;
-      --surface:  #ece8de;
-      --line:     #cec6b0;
+      --bg:       #ede6d0;
+      --surface:  #e3dbbf;
+      --line:     #c8bc9a;
       --text:     #1e1a14;
-      --muted:    #7a7060;
+      --muted:    #7a7055;
       --ink:      #2e4a2e;
       --ink-lt:   #dce8d8;
       --red:      #8b2020;
-      --serif:    'Shippori Mincho B1', serif;
+      --serif:    'Noto Sans Canadian Aboriginal', sans-serif;
       --jp:       'Noto Sans KR', sans-serif;
       --bn:       'Noto Serif Bengali', serif;
     }
@@ -87,7 +87,6 @@
 
     /* ── SECTIONS ── */
     section {
-      min-height: 100vh;
       padding: 110px 3.5rem 90px;
       border-bottom: 1px solid var(--line);
     }
@@ -114,18 +113,27 @@
 
     /* ── ABOUT ── */
     #about {
+      padding-bottom: 60px;
+    }
+
+    .about-box {
+      display: inline-flex;
+      margin-left: 50%;
+    }
+
+    .about-body {
       display: flex;
       align-items: flex-start;
-      gap: 3.5rem;
+      gap: 1.2rem;
     }
+
+    .about-text { flex: 1; }
 
     .about-photo-wrap {
       flex-shrink: 0;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      gap: 0.8rem;
-      margin-top: 0.4rem;
+      gap: 0.6rem;
     }
 
     .about-photo {
@@ -153,11 +161,14 @@
       letter-spacing: 0.1em;
     }
 
-    .about-content {}
+    .about-content {
+      width: 340px;
+      text-align: left;
+    }
 
     .name-block {
-      display: inline-block;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
+      text-align: right;
     }
 
     .name-en {
@@ -199,7 +210,6 @@
       color: var(--muted);
       font-size: 14px;
       line-height: 1.9;
-      max-width: 520px;
       margin-bottom: 2.2rem;
     }
 
@@ -524,15 +534,7 @@
 
   <!-- ── ABOUT ── -->
   <section id="about">
-    <div class="about-photo-wrap">
-      <div style="margin-bottom:1.5rem; height:16px;"></div>
-      <div class="about-photo">
-        <img src="Me.JPG" alt="Spandan" />
-      </div>
-      <a href="https://artsandculture.google.com/asset/cat-and-lobster-jamini-roy/LwHS4JW3C5n3dg?hl=en" target="_blank" rel="noopener">
-        <img class="jamini" src="home_logo.jpg" alt="Cat and Lobster — Jamini Roy" style="width:96px; height:auto; display:block;" />
-      </a>
-    </div>
+    <div class="about-box">
     <div class="about-content">
       <div class="name-block">
         <h1 class="name-en">Spandan</h1>
@@ -540,9 +542,19 @@
           <span class="name-kr">스판단</span><span class="name-sep">·</span><span class="name-bn">স্পন্দন</span>
         </div>
       </div>
-      <p class="about-bio">
-        Born to the murmuring memory of the river and the quiet, tangled roots of my youth in Bengal, I now find my anchorage in the Bay area, shaping analytics and AI. Driven by the vibrant, fractured truths of the greatest painters, my research seeks the human pulse within the machine—a belief that even our most complex algorithms must ultimately learn the flowing, resilient language of the water and the earth.
-      </p>
+      <div class="about-body">
+        <div class="about-photo-wrap">
+          <div class="about-photo">
+            <img src="Me.JPG" alt="Spandan" />
+          </div>
+          <a href="https://artsandculture.google.com/asset/cat-and-lobster-jamini-roy/LwHS4JW3C5n3dg?hl=en" target="_blank" rel="noopener">
+            <img class="jamini" src="home_logo.jpg" alt="Cat and Lobster — Jamini Roy" style="width:96px; height:auto; display:block;" />
+          </a>
+        </div>
+        <div class="about-text">
+        <p class="about-bio">
+          Born to the murmuring memory of the river and the quiet, tangled roots of my youth in Bengal, I now find my anchorage in the Bay area, shaping analytics and AI. Driven by the vibrant, fractured truths of the greatest painters, my research seeks the human pulse within the machine—a belief that even our most complex algorithms must ultimately learn the flowing, resilient language of the water and the earth.
+        </p>
       <div class="about-links">
         <a class="icon-link" href="https://scholar.google.com/citations?user=GE4S8rcAAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -562,7 +574,10 @@
           </svg>
         </a>
       </div>
-    </div>
+      </div><!-- end about-text -->
+      </div><!-- end about-body -->
+    </div><!-- end about-content -->
+    </div><!-- end about-box -->
   </section>
 
   <!-- ── RESUME ── -->
