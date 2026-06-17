@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spandan — 스판단 — স্পন্দন</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;500;600&family=Noto+Sans+KR:wght@300;400&family=Noto+Serif+Bengali:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #f5f2eb;
+      --surface:  #ece8de;
+      --line:     #cec6b0;
+      --text:     #1e1a14;
+      --muted:    #7a7060;
+      --ink:      #2e4a2e;
+      --ink-lt:   #dce8d8;
+      --red:      #8b2020;
+      --serif:    'Shippori Mincho B1', serif;
+      --jp:       'Noto Sans KR', sans-serif;
+      --bn:       'Noto Serif Bengali', serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--jp);
+      font-weight: 300;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 3.5rem;
+      height: 48px;
+    }
+
+    .nav-name {
+      font-family: var(--serif);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--text);
+      text-decoration: none;
+      display: flex;
+      align-items: baseline;
+      gap: 0.7rem;
+    }
+
+    .nav-name .script-jp {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--jp);
+      font-weight: 300;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--ink); }
+
+    /* ── SECTIONS ── */
+    section {
+      min-height: 100vh;
+      padding: 110px 3.5rem 90px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-label {
+      font-family: var(--serif);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 3.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+      max-width: 80px;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      display: flex;
+      align-items: flex-start;
+      gap: 3.5rem;
+    }
+
+    .about-photo-wrap {
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.8rem;
+      margin-top: 0.4rem;
+    }
+
+    .about-photo {
+      width: 96px;
+      height: 96px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .about-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo-placeholder {
+      font-family: var(--jp);
+      font-size: 8px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+    }
+
+    .about-content {}
+
+    .name-block {
+      display: inline-block;
+      margin-bottom: 2rem;
+    }
+
+    .name-en {
+      font-family: var(--serif);
+      font-size: 2.6rem;
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: 0.02em;
+      color: var(--text);
+      margin-bottom: 0.1rem;
+    }
+
+    .name-scripts {
+      text-align: right;
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      margin-top: 0.15rem;
+    }
+
+    .name-kr {
+      font-family: var(--jp);
+      font-weight: 300;
+    }
+
+    .name-bn {
+      font-family: var(--bn);
+      font-weight: 400;
+    }
+
+    .name-sep {
+      color: var(--line);
+      margin: 0 0.3rem;
+    }
+
+    .about-bio {
+      font-family: var(--jp);
+      font-weight: 300;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.9;
+      max-width: 520px;
+      margin-bottom: 2.2rem;
+    }
+
+    .about-links {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .icon-link {
+      display: inline-flex;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .icon-link:hover { color: var(--ink); }
+
+    /* ── RESUME ── */
+    #resume { max-width: 680px; }
+
+    .placeholder-block {
+      border: 1px dashed var(--line);
+      padding: 3rem 2rem;
+      text-align: center;
+      color: var(--muted);
+      font-family: var(--jp);
+      font-weight: 300;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+    }
+
+    /* ── RESEARCH ── */
+    #research { max-width: 780px; }
+
+    .paper-list { display: flex; flex-direction: column; }
+
+    .paper-item {
+      border-top: 1px solid var(--line);
+      padding: 1.8rem 0;
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 1.8rem;
+      align-items: start;
+    }
+
+    .paper-item:last-child { border-bottom: 1px solid var(--line); }
+
+    .paper-year {
+      font-family: var(--serif);
+      font-size: 11px;
+      color: var(--muted);
+      padding-top: 2px;
+      letter-spacing: 0.05em;
+    }
+
+    .paper-title {
+      font-family: var(--serif);
+      font-size: 15px;
+      font-weight: 400;
+      margin-bottom: 0.3rem;
+      line-height: 1.5;
+    }
+
+    .paper-venue {
+      font-family: var(--jp);
+      font-weight: 300;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── LEARNING ── */
+    #learning { max-width: 780px; }
+
+    .learning-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1px;
+      border: 1px solid var(--line);
+      background: var(--line);
+    }
+
+    .learning-card {
+      background: var(--bg);
+      padding: 1.6rem 1.4rem;
+    }
+
+    .learning-tag {
+      font-family: var(--serif);
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 0.7rem;
+    }
+
+    .learning-card p {
+      font-family: var(--jp);
+      font-weight: 300;
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    /* ── PERSONAL ── */
+    #personal { max-width: 900px; }
+
+    .personal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .poetry-block {
+      border-left: 1px solid var(--ink);
+      padding-left: 1.6rem;
+    }
+
+    .poetry-title {
+      font-family: var(--serif);
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .poem {
+      font-family: var(--serif);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 2.1;
+      color: var(--text);
+      white-space: pre-line;
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .photo-cell {
+      background: var(--surface);
+      aspect-ratio: 1;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .photo-cell img { width: 100%; height: 100%; object-fit: cover; }
+
+    .photo-cell-placeholder {
+      font-family: var(--jp);
+      font-size: 9px;
+      color: var(--muted);
+    }
+
+    /* ── ART ── */
+    .art-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .art-cell {
+      background: var(--surface);
+      aspect-ratio: 4/5;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .art-cell img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .art-cell:hover img { transform: scale(1.04); }
+
+    .art-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: var(--ink);
+      color: var(--ink-lt);
+      padding: 0.7rem 1rem;
+      font-family: var(--serif);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .art-cell:hover .art-caption { transform: translateY(0); }
+
+    .art-placeholder {
+      font-family: var(--jp);
+      font-size: 9px;
+      color: var(--muted);
+    }
+
+    /* ── TRAVEL ── */
+    .travel-entries { display: flex; flex-direction: column; }
+
+    .travel-entry {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      border-top: 1px solid var(--line);
+    }
+
+    .travel-entry:last-child { border-bottom: 1px solid var(--line); }
+
+    .travel-photo {
+      aspect-ratio: 4/3;
+      background: var(--surface);
+      overflow: hidden;
+      border-right: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .travel-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+    .travel-text { padding: 2rem 2.5rem; }
+
+    .travel-location {
+      font-family: var(--serif);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.7rem;
+    }
+
+    .travel-text p {
+      font-family: var(--jp);
+      font-weight: 300;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.9;
+    }
+
+    .jamini { flex-shrink: 0; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem 3.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer .footer-name {
+      display: flex;
+      align-items: baseline;
+      gap: 0.8rem;
+    }
+
+    footer .footer-name span:first-child {
+      font-family: var(--serif);
+      font-size: 12px;
+      color: var(--text);
+      letter-spacing: 0.06em;
+    }
+
+    footer .footer-name .script-jp {
+      font-family: var(--serif);
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    footer .footer-email {
+      font-family: var(--jp);
+      font-weight: 300;
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { gap: 1rem; }
+      section { padding: 90px 1.5rem 60px; }
+
+      #about { flex-direction: column; gap: 2rem; }
+
+      .personal-grid { grid-template-columns: 1fr; }
+
+      .travel-entry { grid-template-columns: 1fr; }
+      .travel-photo {
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+        aspect-ratio: 16/9;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#about" class="nav-name">Spandan</a>
+    <ul class="nav-links">
+<li><a href="#resume">Resume</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#learning">Learning</a></li>
+      <li><a href="#personal">Personal</a></li>
+      <li><a href="#art">Art</a></li>
+      <li><a href="#travel">Travel</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── ABOUT ── -->
+  <section id="about">
+    <div class="about-photo-wrap">
+      <div style="margin-bottom:1.5rem; height:16px;"></div>
+      <div class="about-photo">
+        <img src="Me.JPG" alt="Spandan" />
+      </div>
+      <a href="https://artsandculture.google.com/asset/cat-and-lobster-jamini-roy/LwHS4JW3C5n3dg?hl=en" target="_blank" rel="noopener">
+        <img class="jamini" src="home_logo.jpg" alt="Cat and Lobster — Jamini Roy" style="width:96px; height:auto; display:block;" />
+      </a>
+    </div>
+    <div class="about-content">
+      <div class="name-block">
+        <h1 class="name-en">Spandan</h1>
+        <div class="name-scripts">
+          <span class="name-kr">스판단</span><span class="name-sep">·</span><span class="name-bn">স্পন্দন</span>
+        </div>
+      </div>
+      <p class="about-bio">
+        Born to the murmuring memory of the river and the quiet, tangled roots of my youth in Bengal, I now find my anchorage in the Bay area, shaping analytics and AI. Driven by the vibrant, fractured truths of the greatest painters, my research seeks the human pulse within the machine—a belief that even our most complex algorithms must ultimately learn the flowing, resilient language of the water and the earth.
+      </p>
+      <div class="about-links">
+        <a class="icon-link" href="https://scholar.google.com/citations?user=GE4S8rcAAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L2 7.5l10 5.5 10-5.5L12 2z" fill="currentColor" opacity="0.9"/>
+            <path d="M6 10.2v5.3c0 .9.5 1.7 1.3 2.1L12 20l4.7-2.4c.8-.4 1.3-1.2 1.3-2.1v-5.3L12 13 6 10.2z" fill="currentColor" opacity="0.6"/>
+            <path d="M20 7.5v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="20" cy="13.5" r="1" fill="currentColor"/>
+          </svg>
+        </a>
+        <a class="icon-link" href="https://www.linkedin.com/in/spandan-13may/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="20" height="20" rx="3" fill="currentColor" opacity="0.12"/>
+            <rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.2" fill="none"/>
+            <rect x="6.5" y="10" width="2.2" height="7" fill="currentColor"/>
+            <circle cx="7.6" cy="7.6" r="1.3" fill="currentColor"/>
+            <path d="M11.5 10h2.1v1s.6-1.2 2.2-1.2c1.8 0 2.7 1.1 2.7 3.1V17h-2.2v-3.7c0-1-.4-1.6-1.2-1.6-.9 0-1.4.6-1.4 1.7V17h-2.2V10z" fill="currentColor"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── RESUME ── -->
+  <section id="resume">
+    <div class="section-label">Resume</div>
+    <div class="placeholder-block">
+      PDF / LaTeX CV — coming soon
+    </div>
+  </section>
+
+  <!-- ── RESEARCH ── -->
+  <section id="research">
+    <div class="section-label">Research</div>
+    <div class="paper-list">
+      <div class="paper-item">
+        <span class="paper-year">2024</span>
+        <div>
+          <p class="paper-title">Paper title goes here — replace with your actual publication</p>
+          <span class="paper-venue">Conference / Journal · Authors</span>
+        </div>
+      </div>
+      <div class="paper-item">
+        <span class="paper-year">2023</span>
+        <div>
+          <p class="paper-title">Another paper title — add links, arXiv, PDF as needed</p>
+          <span class="paper-venue">Conference / Journal · Authors</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── LEARNING ── -->
+  <section id="learning">
+    <div class="section-label">Learning</div>
+    <div class="learning-grid">
+      <div class="learning-card">
+        <p class="learning-tag">Topic</p>
+        <p>Something you're reading, studying, or exploring — a book, a field, a technique.</p>
+      </div>
+      <div class="learning-card">
+        <p class="learning-tag">Topic</p>
+        <p>Add as many cards as you like. Each one is a snapshot of what you're engaging with.</p>
+      </div>
+      <div class="learning-card">
+        <p class="learning-tag">Topic</p>
+        <p>Could be courses, papers, projects — whatever feels right.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PERSONAL ── -->
+  <section id="personal">
+    <div class="section-label">Personal</div>
+    <div class="personal-grid">
+      <div>
+        <div class="poetry-block">
+          <p class="poetry-title">A poem</p>
+          <p class="poem">Place your poem here,
+line by line,
+the way it breathes
+on the page.</p>
+        </div>
+      </div>
+      <div>
+        <div class="photo-grid">
+          <div class="photo-cell">
+            <!-- <img src="assets/personal1.jpg" alt="" /> -->
+            <span class="photo-cell-placeholder">photo</span>
+          </div>
+          <div class="photo-cell">
+            <span class="photo-cell-placeholder">photo</span>
+          </div>
+          <div class="photo-cell">
+            <span class="photo-cell-placeholder">photo</span>
+          </div>
+          <div class="photo-cell">
+            <span class="photo-cell-placeholder">photo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ART ── -->
+  <section id="art">
+    <div class="section-label">Art</div>
+    <div class="art-grid">
+      <div class="art-cell">
+        <!-- <img src="assets/painting1.jpg" alt="Painting 1" /> -->
+        <span class="art-placeholder">painting</span>
+        <div class="art-caption">Title, Year</div>
+      </div>
+      <div class="art-cell">
+        <span class="art-placeholder">painting</span>
+        <div class="art-caption">Title, Year</div>
+      </div>
+      <div class="art-cell">
+        <span class="art-placeholder">painting</span>
+        <div class="art-caption">Title, Year</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TRAVEL ── -->
+  <section id="travel">
+    <div class="section-label">Travel</div>
+    <div class="travel-entries">
+      <div class="travel-entry">
+        <div class="travel-photo">
+          <!-- <img src="assets/travel1.jpg" alt="Location" /> -->
+          <span class="photo-cell-placeholder">photo</span>
+        </div>
+        <div class="travel-text">
+          <p class="travel-location">Location — Month Year</p>
+          <p>A few lines about this place — what drew you there, what stayed with you.</p>
+        </div>
+      </div>
+      <div class="travel-entry">
+        <div class="travel-photo">
+          <span class="photo-cell-placeholder">photo</span>
+        </div>
+        <div class="travel-text">
+          <p class="travel-location">Location — Month Year</p>
+          <p>Another destination. Keep it brief and felt, not itinerary-style.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-name">
+      <span>Spandan</span>
+      <span class="script-jp">스판단</span>
+      <span class="script-jp" style="font-family:var(--bn)">স্পন্দন</span>
+    </div>
+    <span class="footer-email">spandan1305@gmail.com</span>
+  </footer>
+
+</body>
+</html>
