@@ -130,6 +130,29 @@
     .tag.upcoming { background: var(--red-soft); color: var(--red); }
     .pub-meta a { font-weight: 500; }
 
+
+    /* Publications: citation style */
+    .c-year {
+      display: flex; align-items: center; gap: 14px;
+      font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 13px;
+      color: var(--muted); letter-spacing: 0.06em; margin: 20px 0 10px;
+    }
+    .c-year:first-of-type { margin-top: 4px; }
+    .c-year::after { content: ''; flex: 1; height: 1px; background: var(--line); }
+    .cites { list-style: none; }
+    .cite {
+      border-left: 2px solid var(--line); padding: 1px 0 1px 16px;
+      margin-bottom: 12px; font-family: var(--sans); font-size: 14.5px; line-height: 1.6;
+    }
+    .cite:hover { border-left-color: var(--accent); }
+    .c-auth { color: var(--muted); }
+    .c-auth b { color: var(--text); font-weight: 600; }
+    .c-title { color: var(--text); font-weight: 600; }
+    .c-venue { color: var(--muted); }
+    .c-extra { display: inline-flex; flex-wrap: wrap; gap: 6px; margin-left: 8px; vertical-align: 1px; }
+    .c-extra .tag { font-size: 10.5px; }
+    .c-extra a { font-size: 12.5px; font-weight: 500; }
+
     /* Resume */
     .summary { margin-bottom: 18px; }
     .job { margin-bottom: 18px; }
@@ -256,58 +279,23 @@
     <section id="publications">
       <h2>Publications</h2>
 
-      <div class="year">2027</div>
-      <ul class="pubs">
-        <li class="pub">
-          <span class="logo logo-text">HICSS</span>
-          <div>          <div class="pub-title">Beyond the Illusion of Power: Calibrating Quasi-Experiments in Observational IS</div>
-          <div class="pub-authors"><b>SG Chowdhury</b></div>
-          <div class="pub-meta"><span class="venue">60th Hawaii International Conference on System Sciences (HICSS-60)</span><span class="tag upcoming">To appear, Jan 2027</span><a href="https://arxiv.org/abs/2609.27299" target="_blank" rel="noopener">arXiv</a></div></div>
-        </li>
+      <div class="c-year">2027</div>
+      <ul class="cites">
+        <li class="cite"><span class="c-auth"><b>SG Chowdhury</b>.</span> <span class="c-title">Beyond the Illusion of Power: Calibrating Quasi-Experiments in Observational IS.</span> <em class="c-venue">60th Hawaii International Conference on System Sciences (HICSS-60).</em><span class="c-extra"><span class="tag upcoming">To appear, Jan 2027</span><a href="https://arxiv.org/abs/2609.27299" target="_blank" rel="noopener">arXiv</a></span></li>
       </ul>
 
-      <div class="year">2026</div>
-      <ul class="pubs">
-        <li class="pub">
-          <span class="logo logo-text">NeurIPS</span>
-          <div>          <div class="pub-title">Risk-Aware Adaptive Evaluation: Finding High-Impact Failures Under Limited Budgets</div>
-          <div class="pub-authors"><b>SG Chowdhury</b>, P Maji</div>
-          <div class="pub-meta"><span class="venue">NeurIPS 2026 Workshop on Evaluation of Interactive Agents</span><span class="tag upcoming">To appear, Dec 2026</span><a href="https://eval-interactive-agents-workshop.github.io/" target="_blank" rel="noopener">Workshop</a></div></div>
-        </li>
-        <li class="pub">
-          <span class="logo logo-text">NeurIPS</span>
-          <div>          <div class="pub-title">Closing the Loop on Contrail Avoidance with Satellite Verification</div>
-          <div class="pub-authors"><b>SG Chowdhury</b></div>
-          <div class="pub-meta"><span class="venue">NeurIPS 2026 Workshop on Tackling Climate Change with Machine Learning</span><span class="tag upcoming">Dec 2026</span><a href="https://www.climatechange.ai/events/neurips2026" target="_blank" rel="noopener">Workshop</a></div></div>
-        </li>
-        <li class="pub">
-          <span class="logo logo-text">PRIMA</span>
-          <div>          <div class="pub-title">Commitment Hierarchies under Intent Revision: A Belief-Revision Account of Salvage in Tool-Use Agents</div>
-          <div class="pub-authors"><b>SG Chowdhury</b></div>
-          <div class="pub-meta"><span class="venue">27th International Conference on Principles and Practice of Multi-Agent Systems (PRIMA)</span><span class="tag upcoming">To appear, Dec 2026</span></div></div>
-        </li>
-        <li class="pub">
-          <span class="logo logo-text">DSI</span>
-          <div>          <div class="pub-title">Agentic Share-of-Search: A Multi-Agent AI System for Competitive Decision-Making in LLM-Mediated E-Commerce</div>
-          <div class="pub-authors"><b>SG Chowdhury</b></div>
-          <div class="pub-meta"><span class="venue">57th Annual Conference of the Decision Sciences Institute (DSI)</span><span class="tag upcoming">To appear, Nov 2026</span></div></div>
-        </li>
-        <li class="pub">
-          <span class="logo logo-text">DATA</span>
-          <div>          <div class="pub-title">Selection Bias Correction in Retail Intelligence</div>
-          <div class="pub-authors"><b>SG Chowdhury</b></div>
-          <div class="pub-meta"><span class="venue">15th International Conference on Data Science, Technology and Applications (DATA), Porto</span><span class="tag">Published, Jul 2026</span><a href="https://arxiv.org/abs/2608.26156" target="_blank" rel="noopener">arXiv</a></div></div>
-        </li>
+      <div class="c-year">2026</div>
+      <ul class="cites">
+        <li class="cite"><span class="c-auth"><b>SG Chowdhury</b>, P Maji.</span> <span class="c-title">Risk-Aware Adaptive Evaluation: Finding High-Impact Failures Under Limited Budgets.</span> <em class="c-venue">NeurIPS 2026 Workshop on Evaluation of Interactive Agents.</em><span class="c-extra"><span class="tag upcoming">To appear, Dec 2026</span><a href="https://eval-interactive-agents-workshop.github.io/" target="_blank" rel="noopener">Workshop</a></span></li>
+        <li class="cite"><span class="c-auth"><b>SG Chowdhury</b>.</span> <span class="c-title">Closing the Loop on Contrail Avoidance with Satellite Verification.</span> <em class="c-venue">NeurIPS 2026 Workshop on Tackling Climate Change with Machine Learning.</em><span class="c-extra"><span class="tag upcoming">Dec 2026</span><a href="https://www.climatechange.ai/events/neurips2026" target="_blank" rel="noopener">Workshop</a></span></li>
+        <li class="cite"><span class="c-auth"><b>SG Chowdhury</b>.</span> <span class="c-title">Commitment Hierarchies under Intent Revision: A Belief-Revision Account of Salvage in Tool-Use Agents.</span> <em class="c-venue">27th International Conference on Principles and Practice of Multi-Agent Systems (PRIMA).</em><span class="c-extra"><span class="tag upcoming">To appear, Dec 2026</span></span></li>
+        <li class="cite"><span class="c-auth"><b>SG Chowdhury</b>.</span> <span class="c-title">Agentic Share-of-Search: A Multi-Agent AI System for Competitive Decision-Making in LLM-Mediated E-Commerce.</span> <em class="c-venue">57th Annual Conference of the Decision Sciences Institute (DSI).</em><span class="c-extra"><span class="tag upcoming">To appear, Nov 2026</span></span></li>
+        <li class="cite"><span class="c-auth"><b>SG Chowdhury</b>.</span> <span class="c-title">Selection Bias Correction in Retail Intelligence.</span> <em class="c-venue">15th International Conference on Data Science, Technology and Applications (DATA), Porto.</em><span class="c-extra"><span class="tag">Published, Jul 2026</span><a href="https://arxiv.org/abs/2608.26156" target="_blank" rel="noopener">arXiv</a></span></li>
       </ul>
 
-      <div class="year">2014</div>
-      <ul class="pubs">
-        <li class="pub">
-          <span class="logo logo-text">IJCSIT</span>
-          <div>          <div class="pub-title">News Analytics and Sentiment Analysis to Predict Stock Price Trends</div>
-          <div class="pub-authors"><b>SG Chowdhury</b>, S Routh, S Chakrabarti</div>
-          <div class="pub-meta"><span class="venue">International Journal of Computer Science and Information Technologies 5(3): 3595&ndash;3604</span><span class="tag">68 citations</span></div></div>
-        </li>
+      <div class="c-year">2014</div>
+      <ul class="cites">
+        <li class="cite"><span class="c-auth"><b>SG Chowdhury</b>, S Routh, S Chakrabarti.</span> <span class="c-title">News Analytics and Sentiment Analysis to Predict Stock Price Trends.</span> <em class="c-venue">International Journal of Computer Science and Information Technologies 5(3): 3595&ndash;3604.</em><span class="c-extra"><span class="tag">68 citations</span></span></li>
       </ul>
 
     </section>
